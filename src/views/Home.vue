@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Login @setUser="setUser"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Login from '@/components/Login.vue'
 
 export default {
   name: 'home',
+  mounted: function () {
+    this.setUser(null)
+  },
   components: {
-    HelloWorld
+    Login
+  },
+  methods: {
+    setUser(user) {
+      this.$emit('setUser', user);
+    }
   }
 }
 </script>
