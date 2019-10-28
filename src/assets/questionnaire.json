@@ -3,35 +3,147 @@
   "questions": [
     {
       "titre": "Aimez-vous les chats ?",
-      "choix": ["oui", "non", "<3"]
+      "choix": [
+        {
+          "libelle": "oui",
+          "check": false
+        },
+        {
+          "libelle": "non",
+          "check": false
+        },
+        {
+          "libelle": "<3",
+          "check": false
+        }
+      ],
+      "result": ["oui","<3"]
     },
     {
       "titre": "Aimez-vous les singes ?",
-      "choix": ["oui", "non", "<3"]
+      "choix": [
+        {
+          "libelle": "oui",
+          "check": false
+        },
+        {
+          "libelle": "non",
+          "check": false
+        },
+        {
+          "libelle": "<3",
+          "check": false
+        }
+      ],
+      "result": ["oui","<3"]
     },
     {
       "titre": "Aimez-vous les chiens ?",
-      "choix": ["oui", "non", "<3"]
+      "choix": [
+        {
+          "libelle": "oui",
+          "check": false
+        },
+        {
+          "libelle": "non",
+          "check": false
+        },
+        {
+          "libelle": "<3",
+          "check": false
+        }
+      ],
+      "result": ["oui","<3"]
     },
     {
       "titre": "Aimez-vous les chevaux ?",
-      "choix": ["oui", "non", "<3"]
+      "choix": [
+        {
+          "libelle": "oui",
+          "check": false
+        },
+        {
+          "libelle": "non",
+          "check": false
+        },
+        {
+          "libelle": "<3",
+          "check": false
+        }
+      ],
+      "result": ["oui","<3"]
     },
     {
       "titre": "Aimez-vous les phoques ?",
-      "choix": ["oui", "non", "<3"]
+      "choix": [
+        {
+          "libelle": "oui",
+          "check": false
+        },
+        {
+          "libelle": "non",
+          "check": false
+        },
+        {
+          "libelle": "<3",
+          "check": false
+        }
+      ],
+      "result": ["oui","<3"]
     },
     {
       "titre": "Aimez-vous les bières ?",
-      "choix": ["oui", "non", "<3"]
+      "choix": [
+        {
+          "libelle": "oui",
+          "check": false
+        },
+        {
+          "libelle": "non",
+          "check": false
+        },
+        {
+          "libelle": "<3",
+          "check": false
+        }
+      ],
+      "result": ["oui","<3"]
     },
     {
       "titre": "Aimez-vous les voyages ?",
-      "choix": ["oui", "non", "<3"]
+      "choix": [
+        {
+          "libelle": "oui",
+          "check": false
+        },
+        {
+          "libelle": "non",
+          "check": false
+        },
+        {
+          "libelle": "<3",
+          "check": false
+        }
+      ],
+      "result": ["oui","<3"]
     },
     {
       "titre": "Aimez-vous les bretons ?",
-      "choix": ["oui", "non", "<3"]
+      "choix": [
+        {
+          "libelle": "oui",
+          "check": false
+        },
+        {
+          "libelle": "non",
+          "check": false
+        },
+        {
+          "libelle": "<3",
+          "check": false
+        }
+      ],
+      "result": ["oui","<3"]
     }
   ]
 }

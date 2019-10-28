@@ -1,13 +1,18 @@
 <template>
-  <div class="about">
-    <b-card class="mt-3" header="Questionnaire">
-      <Question :question="questions.questions[pages[page]]"></Question>
+  <div>
+    <b-card v-if="this.page <= this.questions.nb" class="mt-3" header="Questionnaire" :footer="this.page+'/'+this.questions.nb">
+      <Question :question="askedQuestion.questions[page]" @resultQuestion="resultQuestion"></Question>
+    </b-card>
+
+    <b-card v-if="this.page > this.questions.nb" class="mt-3" header="Résultats">
+      <Result :questions="askedQuestion"></Result>
     </b-card>
   </div>
 </template>
 
 <script>
   import Question from '../components/Question.vue'
+  import Result from '../components/Result.vue'
   import questions from '../assets/questionnaire.json'
   export default {
     props:{
@@ -16,24 +21,40 @@
     data: function () {
       return {
         questions,
-        pages:[],
+        askedQuestion:{user:this.user,score:0,questions:[]},
         page:0
       }
     },
     components: {
-      Question
+      Question,
+      Result
     },
     mounted() {
       if(this.user === null){
-        this.$router.back();
+        this.$router.push("Home");
+      }
+      if(questions.nb>questions.questions.length){
+        questions.nb = questions.questions.length
       }
       var i = 0;
-      while( i<questions.nb){
+      var pages=[]
+      while( i<=questions.nb){
         let random = Math.floor(Math.random() * Math.floor(questions.questions.length))
-        if(this.pages.indexOf(random) === -1){
-          this.pages.push(random)
+        if(pages.indexOf(random) === -1){
+          pages.push(random);
+          this.askedQuestion.questions.push(questions.questions[random])
           i++
         }
+      }
+    },
+    methods: {
+      resultQuestion(question){
+        this.questions.questions.map((q) => {
+          if(q.titre === question.titre){
+            q.choix = question.choix
+          }
+        })
+        this.page++
       }
     }
   }
