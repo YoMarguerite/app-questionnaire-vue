@@ -7,7 +7,13 @@
         </router-link>
       </b-navbar-brand>
       <b-navbar-nav class="ml-auto">
-        <b-nav-text v-if="user != null">{{user.firstname+" "+user.lastname+" ("+user.company+")"}}</b-nav-text>
+        <b-dropdown v-if="user != null" :text="user.firstname+' '+user.lastname+' ('+user.company+')'" variant="primary">
+          <b-dropdown-item @click="$router.push('/questionnaire')">Commencer le test</b-dropdown-item>
+          <b-dropdown-item>Mes résultats</b-dropdown-item>
+          <b-dropdown-item v-if="(user.firstname == 'admin')&&(user.lastname == 'admin')&&(user.company == 'admin')">Tous les Résultats</b-dropdown-item>
+          <b-dropdown-divider></b-dropdown-divider>
+          <b-dropdown-item @click="signOut">Déconnexion</b-dropdown-item>
+        </b-dropdown>
       </b-navbar-nav>
     </b-navbar>
     <router-view class="container" @setUser="setUser"/>
@@ -21,9 +27,21 @@
         user:null
       }
     },
-    methods: {
-      setUser(user) {
-        this.user = user;
+    mounted(){
+      this.setUser()
+    },
+    methods:{
+      setUser(){
+        try {
+          this.user = JSON.parse(sessionStorage.getItem("currentUser"))
+        } catch (e) {
+          this.user = null
+        }
+      },
+      signOut(){
+        this.user = null
+        sessionStorage.setItem("currentUser","")
+        this.$router.push("/")
       }
     }
   }

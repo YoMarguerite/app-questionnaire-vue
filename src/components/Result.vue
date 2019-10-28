@@ -34,6 +34,18 @@
         }
       })
       this.questions.score = score
+
+      var results
+      try {
+        results = JSON.parse(localStorage.getItem('results'))
+      } catch (e) {
+        if(!Array.isArray(results)){
+          results = []
+        }
+      }
+      
+      results.push(this.questions)
+      localStorage.setItem('results',JSON.stringify(results))
     }
   }
 </script>

@@ -8,7 +8,10 @@
       >
         {{choix.libelle}}
       </b-form-checkbox>
-      <b-button @click="onSubmit" class="float-lg-right" variant="primary">Question Suivante</b-button>
+      <br>
+      <b-button v-if="index > 0" @click="before" variant="primary">Question Précédente</b-button>
+      <b-button v-if="index < 1" @click="onSubmit" class="float-lg-right" variant="primary">Question Suivante</b-button>
+      <b-button v-if="index === 1" @click="onSubmit" class="float-lg-right" variant="primary">Terminer</b-button>
     </b-form>
   </div>
 </template>
@@ -22,12 +25,16 @@
       }
     },
     props: {
+      index:null,
       question:null
     },
     methods: {
-        onSubmit() {
-            this.$emit("resultQuestion",this.question)
-        }
+      before(){
+          this.$emit("before")
+      },
+      onSubmit() {
+          this.$emit("resultQuestion",this.question)
+      }
     }
   }
 </script>

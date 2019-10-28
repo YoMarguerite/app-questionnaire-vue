@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-card v-if="this.page <= this.questions.nb" class="mt-3" header="Questionnaire" :footer="this.page+'/'+this.questions.nb">
-      <Question :question="askedQuestion.questions[page]" @resultQuestion="resultQuestion"></Question>
+      <Question :index="this.page/this.questions.nb" :question="askedQuestion.questions[page]" @before="page--" @resultQuestion="resultQuestion"></Question>
     </b-card>
 
     <b-card v-if="this.page > this.questions.nb" class="mt-3" header="Résultats">
@@ -15,11 +15,9 @@
   import Result from '../components/Result.vue'
   import questions from '../assets/questionnaire.json'
   export default {
-    props:{
-      user: null
-    },
     data: function () {
       return {
+        user: null,
         questions,
         askedQuestion:{user:this.user,score:0,questions:[]},
         page:0
@@ -30,9 +28,11 @@
       Result
     },
     mounted() {
-      if(this.user === null){
-        this.$router.push("Home");
-      }
+      try {
+          this.user = JSON.parse(sessionStorage.getItem("currentUser"))
+        } catch (e) {
+          this.$router.push("/")
+        }
       if(questions.nb>questions.questions.length){
         questions.nb = questions.questions.length
       }

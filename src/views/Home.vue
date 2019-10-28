@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Login from '@/components/Login.vue'
 
 export default {
@@ -17,8 +16,8 @@ export default {
     Login
   },
   methods: {
-    setUser(user) {
-      this.$emit('setUser', user);
+    setUser() {
+      this.$emit('setUser');
     }
   }
 }

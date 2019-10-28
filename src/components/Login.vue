@@ -77,8 +77,9 @@
       onSubmit(evt) {
         if(this.check()) {
           evt.preventDefault()
-          this.$emit("setUser",this.form)
-          this.$router.push({ name: 'questionnaire', params: { user: this.form } })
+          sessionStorage.setItem("currentUser", JSON.stringify(this.form))
+          this.$emit("setUser")
+          this.$router.push({ name: 'questionnaire'})
         }
       },
     }
