@@ -5,7 +5,7 @@
     </b-card>
 
     <b-card v-if="this.page > this.questions.nb" class="mt-3" header="Résultats">
-      <Result :questions="askedQuestion"></Result>
+      <Result :date="this.$filters.formatDate(new Date())" :questions="askedQuestion"></Result>
     </b-card>
   </div>
 </template>

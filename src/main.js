@@ -8,6 +8,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
+Vue.prototype.$filters = Vue.options.filters
+
+Vue.filter('formatDate', function (value) {
+  return value.getDay()+"/"+value.getMonth()+"/"+value.getFullYear()+" "+value.getHours()+":"+value.getMinutes()+":"+value.getSeconds()
+})
 
 new Vue({
   router,
