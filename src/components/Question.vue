@@ -29,9 +29,11 @@
       question:null
     },
     methods: {
+      //fonction pour revenir sur la question précédente
       before(){
           this.$emit("before")
       },
+      //fonction pour aller à la page suivante
       onSubmit() {
           this.$emit("resultQuestion",this.question)
       }

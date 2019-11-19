@@ -68,12 +68,14 @@
       }
     },
     methods: {
+      //fonction pour checker que tous les champs sont bien remplies avec des données correctes
       check() {
         this.fnState = (this.form.firstname != "")
         this.lnState = (this.form.lastname != "")
         this.cpState = (this.form.company != "")
         return (this.fnState)&&(this.lnState)&&(this.cpState)
       },
+      //envoi des données pour se connecter
       onSubmit(evt) {
         if(this.check()) {
           evt.preventDefault()

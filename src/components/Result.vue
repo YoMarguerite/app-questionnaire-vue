@@ -17,11 +17,13 @@
 <script>
   export default {
     name: 'Result',
+    //on va récupérer la date et la question relative au résultat
     props: {
       date:null,
       questions:null
     },
     created() {
+      //on va définir l'objet result en modifiant la question reçu
       var score = 0;
       this.questions.questions.map((q) => {
         var bool = true
@@ -37,16 +39,14 @@
       })
       this.questions.score = score
       this.questions.date = this.date
+      
+      //enregistrement du résultat
       if(this.questions.user == undefined){
         this.questions.user = JSON.parse(sessionStorage.getItem("currentUser"))
 
-        var results
-        try {
-          results = JSON.parse(localStorage.getItem('results'))
-        } catch (e) {
-          if(!Array.isArray(results)){
-            results = []
-          }
+        var results = JSON.parse(localStorage.getItem('results'))
+        if (results == null){
+          results = []
         }
         
         results.push(this.questions)

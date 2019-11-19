@@ -10,6 +10,7 @@ Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 Vue.prototype.$filters = Vue.options.filters
 
+//fonction qui va permettre de transformer une date en string avec un format prédéfinie DD/MM/YYYY
 Vue.filter('formatDate', function (value) {
   return value.getDay()+"/"+value.getMonth()+"/"+value.getFullYear()+" "+value.getHours()+":"+value.getMinutes()+":"+value.getSeconds()
 })

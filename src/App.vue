@@ -26,9 +26,14 @@
       }
     },
     mounted(){
-      this.setUser()
+      var result = localStorage.getItem("results")
+      if(result === null){
+        localStorage.setItem("results", JSON.stringify([]))
+      }
+      this.signOut()
     },
     methods:{
+      //fonction permettant de récupérer l'utilisateur courant
       setUser(){
         try {
           this.user = JSON.parse(sessionStorage.getItem("currentUser"))
@@ -36,6 +41,7 @@
           this.user = null
         }
       },
+      //fonction permettant de déconnecter l'utilisateur courant
       signOut(){
         this.user = null
         sessionStorage.setItem("currentUser","")
