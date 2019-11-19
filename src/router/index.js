@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Questionnaire from '../views/Questionnaire'
+import Resultat from '../views/Resultat'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,17 @@ const routes = [
     path: '/questionnaire',
     name: 'questionnaire',
     component: Questionnaire
+  },
+  {
+    path: '/my_results',
+    name: 'my_results',
+    component: Resultat
+  },
+  {
+    path: '/all_results',
+    name: 'all_results',
+    component: Resultat,
+    props: { all: true }
   }
 ]
 
